@@ -46,38 +46,54 @@
         .metrics {
             display: flex; justify-content: space-between; margin: 100px 0;
             border: 1px solid var(--border); padding: 50px; border-radius: 4px;
-            background: linear-gradient(to right, #050505, #000);
         }
-        .metric-item h4 { font-size: 3.5rem; font-weight: 700; letter-spacing: -2px; }
-        .metric-item p { color: var(--gray); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        .metric-item h4 { font-size: 3.5rem; font-weight: 700; }
+        .metric-item p { color: var(--gray); font-size: 0.7rem; text-transform: uppercase; }
 
-        /* Projetos */
+        /* Container do Projeto */
         .project-row { display: flex; flex-direction: column; gap: 150px; }
         .project-item {
             display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px;
             align-items: center;
         }
-        .project-info h3 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1; letter-spacing: -2px; }
+        .project-info h3 { font-size: 3rem; margin-bottom: 20px; line-height: 1; letter-spacing: -2px; }
         .project-description { color: var(--gray); font-size: 1.1rem; margin-bottom: 30px; max-width: 500px; }
         
-        .project-visual {
-            width: 100%; height: 450px; background: var(--secondary);
-            border: 1px solid var(--border); border-radius: 8px;
+        /* Janela do Mini-Site */
+        .project-window {
+            width: 100%; height: 450px; background: #080808;
+            border: 1px solid var(--border); border-radius: 12px;
             position: relative; overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
-        
-        .visual-pattern {
-            width: 80%; height: 60%;
-            border: 1px solid #222;
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 20px 20px;
-            position: relative;
+
+        /* Barra de Navegação da Janela */
+        .window-bar {
+            height: 30px; background: #1a1a1a; display: flex; align-items: center; padding: 0 15px; gap: 8px;
         }
-        .visual-pattern::before {
-            content: "SYSTEM_ACTIVE"; position: absolute; top: -25px; left: 0;
-            font-size: 10px; color: var(--highlight); font-family: monospace;
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #333; }
+
+        /* Mini-Site 1: E-commerce Preview */
+        .preview-shop {
+            padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;
         }
+        .shop-card {
+            background: #111; border: 1px solid #222; padding: 15px; border-radius: 8px;
+        }
+        .shop-img { width: 100%; height: 80px; background: #222; margin-bottom: 10px; border-radius: 4px; }
+        .shop-btn { width: 100%; height: 30px; background: var(--highlight); color: #000; border: none; font-size: 0.7rem; font-weight: 700; cursor: pointer; }
+
+        /* Mini-Site 2: Dashboard Preview */
+        .preview-dash {
+            padding: 20px;
+        }
+        .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+        .dash-box { background: #111; height: 60px; border-left: 3px solid var(--highlight); padding: 10px; }
+        .dash-chart {
+            width: 100%; height: 120px; border-bottom: 2px solid #333; border-left: 2px solid #333;
+            display: flex; align-items: flex-end; gap: 10px; padding: 10px;
+        }
+        .bar { width: 30px; background: linear-gradient(to top, var(--highlight), transparent); }
 
         .tech-tag { 
             display: inline-block; border: 1px solid var(--border); 
@@ -94,7 +110,6 @@
 
         @media (max-width: 1024px) {
             .project-item { grid-template-columns: 1fr; gap: 40px; }
-            .metrics { flex-wrap: wrap; gap: 40px; }
         }
     </style>
 </head>
@@ -108,10 +123,10 @@
     </nav>
 
     <header>
-        <span class="dev-tag">Senior Software Developer</span>
+        <span class="dev-tag">Software Engineer</span>
         <h1>BRENO<br>ENGINE.</h1>
         <p style="max-width: 600px; margin-top: 20px; color: var(--gray); font-size: 1.3rem;">
-            Especialista em criar infraestruturas digitais de alta performance. Onde outros veem apenas HTML, eu projeto arquiteturas escaláveis com foco em tempo de resposta zero.
+            Projetando o futuro da web com código limpo e interfaces de alta fidelidade.
         </p>
     </header>
 
@@ -120,43 +135,71 @@
         <div class="metrics">
             <div class="metric-item"><h4>100%</h4><p>SEO SCORE</p></div>
             <div class="metric-item"><h4>&lt;1s</h4><p>LOAD TIME</p></div>
-            <div class="metric-item"><h4>W3C</h4><p>VALID CODE</p></div>
+            <div class="metric-item"><h4>A11Y</h4><p>ACCESS</p></div>
         </div>
 
         <section id="projects">
             <div class="project-row">
                 
                 <div class="project-item">
-                    <div class="project-visual">
-                        <div class="visual-pattern" style="border-color: var(--highlight);"></div>
+                    <div class="project-window">
+                        <div class="window-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                        <div class="preview-shop">
+                            <div class="shop-card">
+                                <div class="shop-img"></div>
+                                <div style="height:10px; width:60%; background:#333; margin-bottom:10px"></div>
+                                <button class="shop-btn">COMPRAR</button>
+                            </div>
+                            <div class="shop-card">
+                                <div class="shop-img"></div>
+                                <div style="height:10px; width:60%; background:#333; margin-bottom:10px"></div>
+                                <button class="shop-btn">COMPRAR</button>
+                            </div>
+                            <div class="shop-card">
+                                <div class="shop-img"></div>
+                                <div style="height:10px; width:60%; background:#333; margin-bottom:10px"></div>
+                                <button class="shop-btn">COMPRAR</button>
+                            </div>
+                            <div class="shop-card">
+                                <div class="shop-img"></div>
+                                <div style="height:10px; width:60%; background:#333; margin-bottom:10px"></div>
+                                <button class="shop-btn">COMPRAR</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3>Core Commerce Engine</h3>
+                        <h3>Next-Gen E-commerce</h3>
                         <p class="project-description">
-                            Arquitetura de vendas otimizada para conversão. Implementação de renderização crítica e redução de 40% no bundle final de estilos.
+                            Interface focada em conversão e velocidade. Arquitetura modular que permite carregamento instantâneo de produtos.
                         </p>
-                        <div>
-                            <span class="tech-tag">SEMANTIC UI</span>
-                            <span class="tech-tag">CSS TOKENS</span>
-                            <span class="tech-tag">VANILLA JS</span>
-                        </div>
+                        <div><span class="tech-tag">UX DESIGN</span><span class="tech-tag">CLEAN CSS</span></div>
                     </div>
                 </div>
 
                 <div class="project-item" style="direction: rtl; text-align: left;">
-                    <div class="project-visual">
-                        <div class="visual-pattern" style="opacity: 0.5;"></div>
+                    <div class="project-window" style="direction: ltr;">
+                        <div class="window-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+                        <div class="preview-dash">
+                            <div class="dash-grid">
+                                <div class="dash-box"><small style="font-size:10px; color:#555">USERS</small><br><strong>24.5k</strong></div>
+                                <div class="dash-box"><small style="font-size:10px; color:#555">SALES</small><br><strong>$12k</strong></div>
+                                <div class="dash-box"><small style="font-size:10px; color:#555">RATE</small><br><strong>98%</strong></div>
+                            </div>
+                            <div class="dash-chart">
+                                <div class="bar" style="height: 40%"></div>
+                                <div class="bar" style="height: 70%"></div>
+                                <div class="bar" style="height: 55%"></div>
+                                <div class="bar" style="height: 90%"></div>
+                                <div class="bar" style="height: 65%"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="project-info" style="direction: ltr;">
-                        <h3>Real-time Analytics Dashboard</h3>
+                        <h3>Data Analytics Hub</h3>
                         <p class="project-description">
-                            Visualização de dados complexos com latência mínima. Sistema modular construído para suportar milhares de requisições simultâneas.
+                            Sistemas de monitoramento em tempo real. Transformando dados brutos em decisões visuais claras e rápidas.
                         </p>
-                        <div>
-                            <span class="tech-tag">WEB WORKERS</span>
-                            <span class="tech-tag">SVG DYNAMICS</span>
-                            <span class="tech-tag">A11Y COMPLIANT</span>
-                        </div>
+                        <div><span class="tech-tag">DATA VIS</span><span class="tech-tag">DASHBOARDS</span></div>
                     </div>
                 </div>
 
@@ -166,12 +209,11 @@
     </div>
 
     <footer>
-        <p style="margin-bottom: 20px; color: var(--gray); text-transform: uppercase; letter-spacing: 2px;">Inicie uma consultoria</p>
+        <p style="margin-bottom: 20px; color: var(--gray); text-transform: uppercase;">Pronto para o próximo nível?</p>
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=breninhogermano@gmail.com" target="_blank" class="contact-trigger">Fale com Breno →</a>
-        
-        <div style="margin-top: 100px; display: flex; justify-content: space-between; color: #222; font-weight: 700;">
-            <p>BRENO / DEVELOPER</p>
-            <p>2025 © ALL RIGHTS RESERVED</p>
+        <div style="margin-top: 100px; display: flex; justify-content: space-between; color: #222;">
+            <p>BRENO / ARCHITECT</p>
+            <p>2025 ©</p>
         </div>
     </footer>
 
